@@ -6,11 +6,7 @@
         :key="`mn__item${index}}`"
         class="mn__item"
       >
-        <a
-          class="mn__target js-shuffle"
-          @click.prevent="$getters['ls/getLs'].value.scrollTo(`#${item}`)"
-          v-text="item"
-        />
+        <n-link class="mn__target js-shuffle" :to="item" v-text="item" />
       </li>
     </ul>
   </nav>
@@ -66,16 +62,6 @@
     transition: transform 0.4s $easeInCubic;
     transform: scaleX(0);
     transform-origin: right center;
-  }
-  //
-  &::before {
-    position: absolute;
-    top: calc(50% + 1.5rem);
-    left: calc(50% - 1px);
-    width: 1px;
-    height: 0.5rem;
-    content: '';
-    background-color: currentColor;
   }
   //
   &:hover {

@@ -183,6 +183,7 @@ export const locomotiveInit = ({ background }: LsType) => {
 
   // destroy
   onBeforeUnmount(() => {
+    if (!ls.value) return
     console.log('onBeforeUnmount _ locomotive')
 
     ls.value.destroy()
