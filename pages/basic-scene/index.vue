@@ -1,8 +1,8 @@
 <template>
-  <div data-scroll-container class="page-home">
+  <div data-scroll-container class="page-basic-scene">
     <div class="ph__inner">
       <section class="ph__section" data-scroll-section>
-        <MoleculeNav />
+        <canvas class="webgl" />
       </section>
     </div>
   </div>
@@ -18,40 +18,38 @@ import {
 import { locomotiveInit } from '@/pages/mixins/locomotive'
 import { createMetaData, headObject } from '@/pages/mixins/head'
 import { useContext } from '@/components/core/getCurrentInstance'
+import { BasicScene } from '@/assets/js/basic-scene'
 
 export default defineComponent({
   setup(_props, _ctx) {
     /**
      * current component instance
      */
-    const { $dispatch, $getters } = useContext()
+    const { $dispatch } = useContext()
     /**
      * init locomotive
      * speed: {Number} wheel power
      */
-    const { speed, resizeHandler } = locomotiveInit({})
+    const { speed } = locomotiveInit({})
 
     /**
      * create page meta object
      */
-    const meta = createMetaData()
+    const meta = createMetaData({ title: 'basic scene' })
+
+    let canvas: BasicScene | undefined
 
     onMounted(() => {
       nextTick(() => {
-        // await ImageSingleLoad(require('Images/test/01.jpg'))
         $dispatch('global/setIsPageReady', true)
-
-        setTimeout(() => {
-          if (!$getters['ls/getLs'].value) return
-
-          $getters['ls/getLs'].value.update()
-          resizeHandler()
-        }, 1000)
+        canvas = new BasicScene()
       })
     })
 
     onBeforeUnmount(() => {
       $dispatch('global/setIsPageReady', false)
+
+      canvas?.finish()
     })
 
     return {
@@ -67,11 +65,5 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-.page-home {
-  //
-}
-
-.ph__inner {
-  //
-}
+//
 </style>

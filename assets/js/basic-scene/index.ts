@@ -60,5 +60,7 @@ export class BasicScene {
     this.renderer.forceContextLoss()
     this.canvas.width = 1 // resize canvas
     this.canvas.height = 1 // resize canvas
+
+    console.log('🔚 end basic scene')
   }
 }

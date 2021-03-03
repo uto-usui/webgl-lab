@@ -9,7 +9,7 @@ export default defineComponent({
 
   setup() {
     return {
-      list: Navigation.items,
+      list: Navigation,
     }
   },
 })
