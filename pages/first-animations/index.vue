@@ -18,7 +18,7 @@ import {
 import { locomotiveInit } from '@/pages/mixins/locomotive'
 import { createMetaData, headObject } from '@/pages/mixins/head'
 import { useContext } from '@/components/core/getCurrentInstance'
-import { TransformsObjects } from '@/assets/js/transforms-objects'
+import { FirstAnimations } from '@/assets/js/first-animtion'
 
 export default defineComponent({
   setup(_props, _ctx) {
@@ -35,14 +35,14 @@ export default defineComponent({
     /**
      * create page meta object
      */
-    const meta = createMetaData({ title: 'transforms objects' })
+    const meta = createMetaData({ title: 'First Animation' })
 
-    let canvas: TransformsObjects | undefined
+    let canvas: FirstAnimations | undefined
 
     onMounted(() => {
       nextTick(() => {
         $dispatch('global/setIsPageReady', true)
-        canvas = new TransformsObjects()
+        canvas = new FirstAnimations()
       })
     })
 

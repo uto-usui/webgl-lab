@@ -25,15 +25,12 @@
 
 .mn__list {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
 .mn__item {
-  width: 6.5rem;
-
-  &:nth-of-type(1) {
-    width: 8.18rem;
-  }
+  //
 }
 
 .mn__target {
@@ -41,19 +38,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 16rem;
   height: 9rem;
-  padding-right: 0.75rem;
-  padding-left: 0.75rem;
   color: $color-gray-level1;
   text-transform: capitalize;
   letter-spacing: 0.1em;
 
-  @include sizes(-1);
-
-  @include desktop {
-    padding-right: 1.5rem;
-    padding-left: 1.5rem;
-  }
+  @include sizes(-2);
 
   &::after {
     position: absolute;
