@@ -2,4 +2,4 @@
 /**
  * mata elements
  */
-export const Navigation = ['basic-scene'] as const
+export const Navigation = ['basic-scene', 'transforms-objects'] as const

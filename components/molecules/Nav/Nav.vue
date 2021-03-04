@@ -6,7 +6,11 @@
         :key="`mn__item${index}}`"
         class="mn__item"
       >
-        <n-link class="mn__target js-shuffle" :to="item" v-text="item" />
+        <n-link
+          class="mn__target js-shuffle"
+          :to="item"
+          v-text="item.replace('-', ' ')"
+        />
       </li>
     </ul>
   </nav>
@@ -41,6 +45,7 @@
   padding-right: 0.75rem;
   padding-left: 0.75rem;
   color: $color-gray-level1;
+  text-transform: capitalize;
   letter-spacing: 0.1em;
 
   @include sizes(-1);

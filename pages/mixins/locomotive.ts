@@ -57,7 +57,7 @@ export const locomotiveInit = ({ background }: LsType) => {
    * resize function
    */
   const resizeHandler = () => {
-    ls.value.update()
+    ls.value?.update()
     console.log('🐈 resize')
   }
 
@@ -183,10 +183,9 @@ export const locomotiveInit = ({ background }: LsType) => {
 
   // destroy
   onBeforeUnmount(() => {
-    if (!ls.value) return
     console.log('onBeforeUnmount _ locomotive')
 
-    ls.value.destroy()
+    ls.value?.destroy()
 
     resizeHandler()
 
