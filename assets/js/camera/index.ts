@@ -45,7 +45,7 @@ export class Camera {
      * Objects
      */
     const geometry = new THREE.BoxGeometry(1, 1, 1)
-    const material = new THREE.MeshBasicMaterial({ color: 0xff0000 })
+    const material = new THREE.MeshBasicMaterial({ color: '#68e3cf' })
     this.mesh = new THREE.Mesh(geometry, material)
     this.scene.add(this.mesh)
 
@@ -74,8 +74,16 @@ export class Camera {
     this.renderer.setSize(this.sizes.width, this.sizes.height)
     this.renderer.render(this.scene, this.camera)
 
+    // max 2
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+
+    // set event
     this.onMousemove = this.onMousemove.bind(this)
     window.addEventListener('mousemove', this.onMousemove)
+    this.onDblclick = this.onDblclick.bind(this)
+    window.addEventListener('dblclick', this.onDblclick)
+    this.onResize = this.onResize.bind(this)
+    window.addEventListener('resize', this.onResize)
 
     /**
      * Animate
@@ -104,12 +112,44 @@ export class Camera {
     this.cursor.y = -(event.clientY / this.sizes.height - 0.5)
   }
 
+  onDblclick() {
+    if (this.canvas === null) return
+
+    const fullscreenElement =
+      document.fullscreenElement || document.webkitFullscreenElement
+
+    if (!fullscreenElement) {
+      if (this.canvas.requestFullscreen) {
+        this.canvas.requestFullscreen()
+      } else if (this.canvas.webkitRequestFullscreen) {
+        this.canvas.webkitRequestFullscreen()
+      }
+    } else if (document.exitFullscreen) {
+      document.exitFullscreen()
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen()
+    }
+  }
+
+  onResize() {
+    // Update sizes
+    this.sizes.width = window.innerWidth
+    this.sizes.height = window.innerHeight
+
+    // Update camera
+    this.camera.aspect = this.sizes.width / this.sizes.height
+    this.camera.updateProjectionMatrix()
+
+    // Update renderer
+    this.renderer.setSize(this.sizes.width, this.sizes.height)
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+  }
+
   tick() {
     // Update controls
     this.controls.update()
 
-    const elapsedTime = this.clock.getElapsedTime()
-    this.mesh.rotation.y = elapsedTime
+    this.mesh.rotation.y = this.clock.getElapsedTime()
 
     // camera circle move
     // this.camera.position.x = Math.sin(this.cursor.x * Math.PI * 2) * 2
@@ -131,7 +171,10 @@ export class Camera {
     if (this.canvas === null) throw new Error('canvas null')
 
     window.cancelAnimationFrame(this.frameId)
+
     window.removeEventListener('mousemove', this.onMousemove)
+    window.removeEventListener('dblclick', this.onDblclick)
+    window.removeEventListener('resize', this.onResize)
 
     this.scene.children.forEach((obj) => {
       obj.traverse((obj3D) => DisposeThreeObj(obj3D))
