@@ -175,6 +175,8 @@ module.exports = {
       scss,
     },
 
+    transpile: ['three'],
+
     babel: {
       presets({ isServer }) {
         return [
