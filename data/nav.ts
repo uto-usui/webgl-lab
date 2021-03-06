@@ -7,4 +7,5 @@ export const Navigation = [
   'transforms-objects',
   'first-animations',
   'camera',
+  'geometries',
 ] as const
