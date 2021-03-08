@@ -26,11 +26,11 @@
 .mn__list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
 }
 
 .mn__item {
-  //
+  flex: 1 1;
+  min-width: 16rem;
 }
 
 .mn__target {
@@ -38,13 +38,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 16rem;
+  width: 100%;
   height: 9rem;
   color: $color-gray-level1;
   text-transform: capitalize;
   letter-spacing: 0.1em;
-
-  @include sizes(-2);
 
   &::after {
     position: absolute;
