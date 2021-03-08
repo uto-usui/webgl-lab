@@ -18,7 +18,6 @@ import {
 import { locomotiveInit } from '@/pages/mixins/locomotive'
 import { createMetaData, headObject } from '@/pages/mixins/head'
 import { useContext } from '@/components/core/getCurrentInstance'
-import { Camera } from '@/assets/js/camera'
 import { Geometries } from '@/assets/js/geometries'
 
 export default defineComponent({
@@ -38,7 +37,7 @@ export default defineComponent({
      */
     const meta = createMetaData({ title: 'geometries' })
 
-    let canvas: Camera | undefined
+    let canvas: Geometries | undefined
 
     onMounted(() => {
       nextTick(() => {
