@@ -1,1 +1,0 @@
-(this.webpackJsonp=this.webpackJsonp||[]).push([[8],{337:function(t,e,p){"use strict";p.r(e);var n=p(5);e.default=Object(n.c)({name:"AtomLead",props:{text:{type:String,default:""},split:{type:Boolean,default:!1}},setup:function(){return{}}})}}]);

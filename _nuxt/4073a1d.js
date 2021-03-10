@@ -1,0 +1,1 @@
+(this.webpackJsonp=this.webpackJsonp||[]).push([[19],{347:function(s,t,e){"use strict";e.r(t);var c=e(5),n=e(138);t.default=Object(c.c)({name:"MoleculesNav",props:{},setup:function(){return{list:n.a}}})}}]);

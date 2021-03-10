@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/debug-ui", {data:[{}],fetch:{},mutations:[]});

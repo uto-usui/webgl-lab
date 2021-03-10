@@ -1,1 +1,0 @@
-(this.webpackJsonp=this.webpackJsonp||[]).push([[17],{342:function(t,e,s){"use strict";s.r(e);var n=s(5);e.default=Object(n.c)({name:"AtomHed",props:{text:{type:String,default:"test"}},setup:function(){return{}}})}}]);
