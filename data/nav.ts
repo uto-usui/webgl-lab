@@ -8,4 +8,5 @@ export const Navigation = [
   'first-animations',
   'camera',
   'geometries',
+  'debug-ui',
 ] as const
